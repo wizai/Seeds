@@ -1,0 +1,28 @@
+html{
+  font-size: 62.5%;
+  box-sizing: border-box;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: $Circular;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  font-weight: normal;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  &.homepage{
+    height: 100%;
+    overflow:hidden;
+  }
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+}

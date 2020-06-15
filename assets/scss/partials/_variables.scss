@@ -1,0 +1,18 @@
+/*COLORS*/
+$black        : #353535;
+$blue         : #1E91BE;
+$blueDark     : #166A8B;
+$blueDarker   : #0C3646;
+$green        : #ABBB47;
+$orange       : #EB734F;
+$white        : #ffffff;
+
+/*TYPO*/
+@import "fonts.scss";
+$Circular: "Circular Std", sans-serif;
+
+/**** RESPONSIVE ****/
+$mini-mobile: "screen and (max-width: 520px)";
+$mobile: "screen and (max-width: 767px)";
+$tablet: "screen and (max-width: 992px)";
+$desktop: "screen and (max-width: 1200px)";
