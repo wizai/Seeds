@@ -1,0 +1,8 @@
+.page_signin{
+  padding: 20px;
+  min-height: 100vh;
+  @include flexbox();
+  @include align-items(center);
+  @include justify-content(space-between);
+  @include flex-flow(column wrap);
+}
