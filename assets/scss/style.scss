@@ -4,13 +4,24 @@
 @import "partials/mixins";
 @import "partials/commons";
 @import "partials/header";
+@import "partials/form";
 
 // Theme Seeds - Library
 
 
 // Theme Seeds - Pages
+@import "pages/login";
+@import "pages/signup";
 @import "pages/signin";
+@import "pages/404";
+@import "pages/garden";
+@import "pages/plant";
+@import "pages/search";
 
 
-// Theme Seeds - Blocks
-
+// Theme Seeds - Components
+@import "components/block-infos";
+@import "components/filters";
+@import "components/searchbar";
+@import "components/form_addToGarden";
+@import "components/block_seed";

@@ -1,0 +1,77 @@
+.form_addToGarden{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: calc(100% - 4px);
+  height: 100%;
+  z-index: 11;
+  visibility: hidden;
+  @include flexbox();
+  @include flex-direction(column);
+  @include transition(all 10ms linear);
+  transition-delay: .75s;
+  &.open{
+    visibility: visible;
+    transition-delay: 0s;
+    .form_addToGarden__container{
+      opacity: 1;
+      transition-delay: .75s;
+    }
+    &:before{
+      height: 100%;
+    }
+  }
+  &:before{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #232323;
+    opacity: .95;
+    @include transition(height .5s cubic-bezier(.77,0,.175,1));
+    transition-delay: .25s;
+  }
+  &__container{
+    background-color: $white;
+    padding: 30px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    position: relative;
+    margin-top: auto;
+    opacity: 0;
+    @include transition(opacity .5s cubic-bezier(.77,0,.175,1));
+    transition-delay: .0s;
+  }
+  h1{
+    margin-bottom: 50px;
+  }
+  &__close {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+    width: 40px;
+    height: 40px;
+    background-color: $greyLight;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    color: $black;
+    cursor: pointer;
+    z-index: 11;
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(center);
+  }
+  .custom_form__actions{
+    @include flexbox();
+    @include justify-content(center);
+    .btn{
+      width: auto;
+      min-width: auto;
+      margin: 0 5px;
+    }
+  }
+}

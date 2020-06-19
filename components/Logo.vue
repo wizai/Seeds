@@ -18,7 +18,6 @@
   @import "@/assets/scss/style.scss";
 
   .SeedsLogo {
-    margin: auto;
     @include animation(1s appear)
   }
 

@@ -1,0 +1,43 @@
+.block_seed{
+  position: relative;
+  width: 100%;
+  margin-bottom: 2.5rem;
+  text-decoration: none;
+  color: $black;
+  @include flexbox();
+  @include align-items(center);
+  @include justify-content(space-between);
+  &--img{
+    width: 120px;
+    height: 100px;
+    background-size: cover;
+    background-position: center center;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+  }
+  &--text{
+    width: 100%;
+    max-width: calc(100% - 140px);
+  }
+  &--title{
+    font-weight: 700;
+    font-size: 1.8rem;
+  }
+  &--date{
+    font-size: 1.2rem;
+    color: $grey;
+  }
+  &--category{
+    font-size: 1.2rem;
+    display: inline-block;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: $greenLight;
+    color: $green;
+    font-weight: 600;
+    margin: 5px 0;
+  }
+}

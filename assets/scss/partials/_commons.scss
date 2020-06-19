@@ -11,6 +11,7 @@ body {
   line-height: 1.5;
   font-weight: normal;
   overflow-x: hidden;
+  color: $black;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -25,4 +26,155 @@ body {
 *:after {
   box-sizing: border-box;
   margin: 0;
+}
+
+#root{
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.App{
+  // Size iphone 6/7/8
+  /*width: 375px;
+  height: 667px;*/
+  // Size iphone 6/7/8 Plus
+  /*width: 414px;
+  height: 736px;*/
+  // Size iphone X
+  width: 375px;
+  height: 812px;
+  position: relative;
+  overflow: hidden;
+  background-color: $white;
+  @include box-shadow(0 25px 50px -12px rgba(0, 0, 0, 0.25));
+}
+.container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 2rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 100%;
+  //position: relative;
+  @include scrollbar(4px);
+
+  section[class^="page_"]{
+    width: 100%;
+    min-height: calc(100% - 20px);
+    @include flexbox();
+    @include flex-flow(column wrap);
+  }
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+  transition-duration: 250ms;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+
+h1,h2{
+  font-weight: 900;
+  font-size: 2.5rem;
+}
+
+.page{
+  &__header{
+    margin: 2rem 0 4rem;
+    position: relative;
+    @include flexbox();
+    @include align-items(center);
+    &--user{
+      width: 60px;
+      height: 60px;
+      background-size: cover;
+      background-position: center center;
+      margin-right: 20px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+    }
+    &--link{
+      font-size: 2.5rem;
+      color: $black;
+      font-weight: 700;
+      text-decoration: none;
+      outline: none;
+    }
+    p{
+      margin-top: 10px;
+    }
+    &--add{
+      margin-left: auto;
+      -webkit-border-radius: 100%;
+      -moz-border-radius: 100%;
+      border-radius: 100%;
+      background-color: $greyLight;
+      color: $grey;
+      font-size: 3rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: 0;
+      outline: none;
+      width: 40px;
+      height: 40px;
+      line-height: 36px;
+      text-align: center;
+    }
+  }
+  &__title{
+    margin-bottom: 3rem;
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(space-between);
+    @include flex-flow(row wrap);
+    &--row{
+      color: $grey;
+      @include flexbox();
+      @include align-items(center);
+      @include justify-content(space-between);
+      &.w100{
+        margin-top: 10px;
+        width: 100%;
+      }
+    }
+  }
+  &__footer{
+    margin-top: auto;
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(center);
+  }
+}
+
+.btn{
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  background-color: $green;
+  color: $white;
+  font-size: 1.4rem;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 15px 25px;
+  cursor: pointer;
+  margin: 5px;
+  border: 0;
+  font-family: $Circular;
+  outline: none;
+  display: inline-block;
+  &.btn-light{
+    background-color: $greenLight;
+    color: $green;
+  }
 }

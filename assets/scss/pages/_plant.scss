@@ -1,0 +1,171 @@
+.page_plant{
+  margin: -20px;
+  width: calc(100%  + 40px) !important;
+  &__header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 20px 0 20px;
+    &--link{
+      font-size: 2.5rem;
+      color: $white;
+      font-weight: 700;
+      text-decoration: none;
+      outline: none;
+    }
+  }
+  &__img{
+    height: 250px;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+  }
+  &__actions{
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: calc(100% - 4px);
+    z-index: 10;
+    padding: 20px;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+    @include flexbox();
+    &--remove{
+      background-color: $white;
+      border: 2px solid $grey;
+      -webkit-border-radius: 15px;
+      -moz-border-radius: 15px;
+      border-radius: 15px;
+      font-weight: 600;
+      margin-right: 10px;
+      cursor: pointer;
+      font-size: 2rem;
+      width: 60px;
+      height: 60px;
+      text-align: center;
+      line-height: 60px;
+      display: inline-block;
+    }
+    &--add{
+      padding: 15px 25px;
+      background-color: $yellow;
+      -webkit-border-radius: 15px;
+      -moz-border-radius: 15px;
+      border-radius: 15px;
+      font-weight: 600;
+      @include flex-grow(1);
+      cursor: pointer;
+      text-align: center;
+      span{
+        font-size: 2rem;
+        margin-right: 10px;
+      }
+    }
+  }
+  &__content{
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    background-color: $white;
+    margin-top: -30px;
+    padding: 30px 30px 100px 30px;
+    position: relative;
+  }
+  &__subtitle{
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+    display: inline-block;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: $greenLight;
+    color: $green;
+    font-weight: 600;
+  }
+  &__localisation{
+    margin-bottom: 20px;
+    .page_plant__informations--title{
+      margin-bottom: 0;
+    }
+    &--text{
+      font-size: 1.4rem;
+      line-height: 2.5rem;
+    }
+  }
+  &__description{
+    font-size: 1.4rem;
+    line-height: 2.5rem;
+  }
+  &__informations{
+    &--row{
+      margin-bottom: 40px;
+      @include flexbox();
+      @include justify-content(space-between);
+      @include flex-flow(row wrap);
+    }
+    &--title{
+      font-weight: 700;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    &--date{
+      font-size: 1.4rem;
+      background-color: $greyLight;
+      padding: 10px 15px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      color: $grey;
+      width: calc(50% - 10px);
+      @include flexbox();
+      @include align-items(center);
+      @include justify-content(space-between);
+      i{
+        font-size: 1.8rem;
+      }
+      div{
+        width: calc(100% - 30px);
+        p:first-child{
+          text-transform: uppercase;
+          font-size: 1.2rem;
+          font-weight: 600;
+        }
+      }
+    }
+    &--item{
+      width: calc(50% - 5px);
+      font-size: 1.4rem;
+      color: $grey;
+      @include flexbox();
+      @include align-items(center);
+      @include justify-content(space-between);
+      div:first-child{
+        background-color: #fff9e5;
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        border-radius: 100%;
+        color: $yellow;
+        height: 40px;
+        width: 40px;
+        font-size: 1.8rem;
+        @include flexbox();
+        @include align-items(center);
+        @include justify-content(center);
+      }
+      div{
+        width: calc(100% - 55px);
+        p{
+          font-size: 1.4rem;
+          color: $green;
+          font-weight: 600;
+          &:last-of-type{
+            color: $grey;
+            font-weight: 300;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+.block_searchbar {
+  position: relative;
+
+  &:after {
+    content: "\e900";
+    font-family: 'icons' !important;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    display: inline-block;
+    color: $grey;
+    @include transform(translateY(-50%));
+  }
+
+  input {
+    width: 100%;
+    color: $black;
+    background-color: $whiteLight;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    width: 100%;
+    display: block;
+    font-family: $Circular;
+    font-size: 1.4rem;
+    border: 0;
+    outline: none;
+    resize: none;
+    padding: 15px 20px 15px 50px;
+    @include transition(border-color .15s cubic-bezier(.4, 0, .2, 1));
+    @include placeholder {
+      color: $grey;
+    }
+  }
+}

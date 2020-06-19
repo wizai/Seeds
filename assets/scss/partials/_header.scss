@@ -1,0 +1,23 @@
+.header{
+  margin: 2rem 0 4rem;
+  position: relative;
+  @include flexbox();
+  @include align-items(center);
+  @include justify-content(space-between);
+  &__title{
+    font-size: 3rem;
+    font-weight: 900;
+    text-decoration: none;
+    color: $black;
+    display: inline-block;
+    position: relative;
+    padding-right: 10px;
+    &:after{
+      content: '.';
+      color: $green;
+      position: absolute;
+      bottom: 0px;
+      right: 0;
+    }
+  }
+}

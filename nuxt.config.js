@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 
 export default {
   mode: 'universal',
@@ -29,7 +30,9 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-  ],
+    { src: "~/plugins/isotope.js", ssr: false },
+    '~/plugins/vue-moment.js'
+    ],
   /*
   ** Nuxt.js dev-modules
   */
@@ -43,12 +46,33 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/dotenv',
+    '@nuxtjs/auth'
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL: 'http://seeds-api.test/api/',
+  },
+  auth: {
+    localStorage: false,
+    cookie: {
+      prefix: 'auth.',
+      options: {
+        path: '/',
+        maxAge: 10800
+      }
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'auth/login', method: 'post', propertyName: 'access_token' },
+          user: { url: 'auth/me', method: 'get', propertyName: 'content' },
+          logout: false
+        }
+      }
+    }
   },
   /*
   ** Build configuration
@@ -57,7 +81,12 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
-    }
+    vendor: ["jquery"],
+    plugins: [
+      new webpack.ProvidePlugin({
+        $: "jquery",
+        '_': 'lodash'
+      })
+    ]
   }
 }

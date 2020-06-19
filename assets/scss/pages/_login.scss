@@ -1,0 +1,32 @@
+.page_login{
+  min-height: 100%;
+  background-color: $white;
+  @include flexbox();
+  @include align-items(center);
+  @include justify-content(center);
+  @include flex-flow(column wrap);
+
+  .SeedsLogo{
+    width: 100px;
+    height: 100px;
+  }
+
+  &__logo{
+    margin-bottom: 100px;
+    text-align: center;
+    @include flexbox();
+    @include flex-flow(column wrap);
+    @include align-items(center);
+  }
+
+  &__baseline{
+  }
+
+  &__actions{
+    text-align: center;
+    .btn{
+      width: 250px;
+      margin: 10px;
+    }
+  }
+}
