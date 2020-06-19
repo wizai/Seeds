@@ -4,7 +4,7 @@
       <nuxt-link to="profil" class="page__header--user">
         <logo />
       </nuxt-link>
-      <h1>Hi, James !</h1>
+      <h1>Hi, {{this.$auth.user.firstname}} !</h1>
       <nuxt-link to="search" class="page__header--add">+</nuxt-link>
     </div>
     <div class="block_searchbar">
@@ -49,7 +49,7 @@
       </ul>
     </div>
     <div class="page_garden__content">
-      <nuxt-link :to="{name: 'plant-id', params: { id: item.id } }" :class="'block_seed ' + item.category" v-for="item in plants" :key="item.id">
+      <nuxt-link :to="{name: 'plant-id', params: { id: item.id } }" :class="'block_seed ' + item.category" v-for="item in getAllPlantInGarden" :key="item.id">
         <div class="block_seed--img"
              :style="{ 'background-image': 'url(' + item.image + ')' }">
         </div>
@@ -60,12 +60,12 @@
           <p class="block_seed--date" v-if="item.planted">Planted : {{ item.planted | moment('MMM d, YYYY') }}</p>
         </div>
       </nuxt-link>
-      <div class="block_seed">
+      <!--<div class="block_seed">
         <div class="block-infos">
           <p>You have no fruit <br> <b>You can add them by doing a search.</b></p>
           <span class="btn">Start research</span>
         </div>
-      </div>
+      </div>-->
     </div>
   </section>
 </template>
@@ -88,24 +88,29 @@
       data: function () {
         return {
           formPlant_open: false,
+          gardens: {}
         }
       },
       components: {
         Logo,
       },
       async asyncData({ $axios }) {
-        const plants  = await $axios.$get(`http://seeds-api.test/api/plant`);
-        plants.data.forEach(item => {
-          let tmp = _.kebabCase(item.title);
-          item["slug"] = tmp;
-        });
-        return {  plants: plants.data };
+        const gardens = await $axios.$get(`http://seeds-api.test/api/garden`);
+        return {  gardens: gardens };
       },
       mounted() {
         this.isotope();
+        this.user = this.$auth.user.id
+
       },
       computed: {
-        ...mapGetters(['isAuthenticated', 'loggedInUser'])
+        ...mapGetters(['isAuthenticated', 'loggedInUser']),
+
+        getAllPlantInGarden: function () {
+          console.log(this.gardens.filter(x => x.user_id === this.$auth.user.id));
+          const garden =  this.gardens.filter(x => x.user_id === this.$auth.user.id);
+          return garden[0].plants ;
+        },
       },
       methods: {
         isotope() {

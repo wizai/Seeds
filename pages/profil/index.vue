@@ -9,9 +9,9 @@
         <h2>My profil</h2>
       </div>
       <div class="page_profil__user">
-        <p class="page_profil__user--firstname">Firstname </p>
-        <p class="page_profil__user--lastname">lastname</p>
-        <p class="page_profil__user--email">email</p>
+        <p class="page_profil__user--firstname">{{this.$auth.user.firstname}} </p>
+        <p class="page_profil__user--lastname">{{this.$auth.user.lastname}}</p>
+        <p class="page_profil__user--email">{{this.$auth.user.email}}</p>
         <span class="page_profil__user--logout" @click="logout">Logout</span>
       </div>
     </section>

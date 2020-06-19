@@ -52,7 +52,7 @@
     <div class="page_search__content">
       <nuxt-link :to="{name: 'plant-id', params: { id: item.id } }" :class="'block_seed ' + item.category" v-for="item in plants" :key="item.id">
         <div class="block_seed--img"
-             :style="{ 'background-image': 'url(' + item.img + ')' }">
+             :style="{ 'background-image': 'url(' + item.image + ')' }">
         </div>
         <div class="block_seed--text">
           <p class="block_seed--title">{{ item.title }}</p>
@@ -61,12 +61,12 @@
           <p class="block_seed--date" v-if="item.planted">Planted : {{ item.planted | moment('MMM d, YYYY') }}</p>
         </div>
       </nuxt-link>
-      <div class="block_seed">
+      <!--<div class="block_seed">
         <div class="block-infos">
           <p>You have no fruit <br> <b>You can add them by doing a search.</b></p>
           <span class="btn">Start research</span>
         </div>
-      </div>
+      </div>-->
     </div>
   </section>
 </template>

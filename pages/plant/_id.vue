@@ -108,7 +108,7 @@
     },
     async asyncData({ $axios, params }) {
       const plant  = await $axios.$get(`http://seeds-api.test/api/plant/${params.id}`);
-      return { plant: plant.data };
+      return { plant: plant };
     },
     methods: {
       showFormPlant: function() {
@@ -118,7 +118,7 @@
       async removePlant () {
         let data = {
           'plant_id': this.plant.id,
-          'garden_id': 1
+          'garden_id': 3
         };
         try {
           let res = await this.$axios.post("remove-plant", data);
