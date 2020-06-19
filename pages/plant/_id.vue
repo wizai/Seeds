@@ -9,14 +9,14 @@
       </div>
     </div>
     <div class="page_plant__actions">
-      <div class="page_plant__actions--remove">
+      <div class="page_plant__actions--remove" @click="removePlant()">
         <span><i class="icon-delete"></i></span>
       </div>
       <div class="page_plant__actions--add" @click="showFormPlant()">
         <p><span>+</span>Add to your garden</p>
       </div>
     </div>
-    <Form_plant :open="formPlant_open" @hideForm="formPlant_open = false" />
+    <Form_plant :open="formPlant_open" :plant_id="plant.id" @hideForm="formPlant_open = false" />
     <div class="page_plant__content">
       <h1 class="page_plant__title">{{ plant.title }}</h1>
       <p class="page_plant__subtitle">{{ plant.category }}</p>
@@ -84,7 +84,8 @@
       </div>
       <div class="page_plant__localisation">
         <p class="page_plant__informations--title">Localisation</p>
-        <p class="page_plant__localisation--text">{{ plant.localisation }}</p>
+        <p class="page_plant__localisation--text" v-if="plant.localisation">{{ plant.localisation }}</p>
+        <p v-else>--- - ----</p>
       </div>
       <p class="page_plant__description">{{ plant.description }}</p>
     </div>
@@ -100,19 +101,32 @@
     components: {
       Form_plant,
     },
+    data: function () {
+      return {
+        formPlant_open: false,
+      }
+    },
     async asyncData({ $axios, params }) {
       const plant  = await $axios.$get(`http://seeds-api.test/api/plant/${params.id}`);
       return { plant: plant.data };
-    },
-    data: function () {
-      return {
-        formPlant_open: false
-      }
     },
     methods: {
       showFormPlant: function() {
         this.formPlant_open = !this.formPlant_open;
         console.log()
+      },
+      async removePlant () {
+        let data = {
+          'plant_id': this.plant.id,
+          'garden_id': 1
+        };
+        try {
+          let res = await this.$axios.post("remove-plant", data);
+          return res;
+        }
+        catch (e) {
+          console.log(e)
+        }
       }
     }
   }

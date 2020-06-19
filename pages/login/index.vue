@@ -6,7 +6,7 @@
       </nuxt-link>
     </div>
     <div class="page__title">
-      <h1>Create an account</h1>
+      <h1>Sign In</h1>
     </div>
     <form method="post" @submit.prevent="login" class="custom_form">
       <div class="custom_form__row" :class="errors && errors.email ? 'error' : ''">
@@ -56,16 +56,18 @@
         this.isLoading = true
         this.errors = null
         try {
-          await this.$auth.loginWith("local", {
+          let response = await this.$auth.loginWith("local", {
             data: {
               email: this.fields.email,
               password: this.fields.password
             }
           });
+          console.log(response)
           this.$router.push('/garden')
-        } catch (e) {
+        } catch (err) {
+          console.log(err)
           this.isLoading = false
-          this.errors = e.response.data
+          this.errors = err.response.data
         }
       }
     }

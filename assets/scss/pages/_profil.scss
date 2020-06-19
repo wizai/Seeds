@@ -1,0 +1,21 @@
+.page_profil{
+  &__user{
+    margin-bottom: 3rem;
+    &--firstname{
+      font-size: 2rem;
+      color: $grey;
+      font-weight: 600;
+    }
+    &--email, &--lastname{
+      margin-top: 10px;
+    }
+    &--logout{
+      display: inline-block;
+      margin-top: 10px;
+      color: $red;
+      text-decoration: underline;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  }
+}

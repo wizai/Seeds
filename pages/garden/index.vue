@@ -1,8 +1,8 @@
 <template>
   <section class="page_garden">
     <div class="page__header">
-      <nuxt-link to="profil" class="page__header--user"
-           style="background-image: url('https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80')">
+      <nuxt-link to="profil" class="page__header--user">
+        <logo />
       </nuxt-link>
       <h1>Hi, James !</h1>
       <nuxt-link to="search" class="page__header--add">+</nuxt-link>
@@ -72,6 +72,9 @@
 
 <script>
 
+  import Logo from '~/components/Logo.vue'
+  import { mapGetters } from 'vuex'
+
   let Isotope;
   let qsRegex;
   let buttonFilter;
@@ -87,6 +90,9 @@
           formPlant_open: false,
         }
       },
+      components: {
+        Logo,
+      },
       async asyncData({ $axios }) {
         const plants  = await $axios.$get(`http://seeds-api.test/api/plant`);
         plants.data.forEach(item => {
@@ -97,6 +103,9 @@
       },
       mounted() {
         this.isotope();
+      },
+      computed: {
+        ...mapGetters(['isAuthenticated', 'loggedInUser'])
       },
       methods: {
         isotope() {
@@ -149,7 +158,7 @@
           }, 200 ))();
         }
       },
-      // middleware: 'auth'
+      middleware: 'auth'
     }
 </script>
 

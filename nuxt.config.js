@@ -47,6 +47,7 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/dotenv',
     '@nuxtjs/auth'
+    // '@nuxtjs/auth-next'
   ],
   /*
   ** Axios module configuration
@@ -56,20 +57,12 @@ export default {
     baseURL: 'http://seeds-api.test/api/',
   },
   auth: {
-    localStorage: false,
-    cookie: {
-      prefix: 'auth.',
-      options: {
-        path: '/',
-        maxAge: 10800
-      }
-    },
     strategies: {
       local: {
         endpoints: {
           login: { url: 'auth/login', method: 'post', propertyName: 'access_token' },
-          user: { url: 'auth/me', method: 'get', propertyName: 'content' },
-          logout: false
+          user: { url: 'auth/me', method: 'post', propertyName: 'user' },
+          logout: { url: 'auth/logout', method: 'post' },
         }
       }
     }

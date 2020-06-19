@@ -47,6 +47,10 @@
         }
       }
     }
+    textarea + label{
+      top: 15px;
+      bottom: inherit;
+    }
     label{
       position: absolute;
       bottom: 15px;
